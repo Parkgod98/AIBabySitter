@@ -4,10 +4,10 @@ import base64
 def get_url(img_path) :
 
     # Imgur API 클라이언트 ID
-    client_id = '-----------' # 임걸에서 받음 -> 가림
+    client_id = '-----------' # imgur에서 받은 Client Key -> 가림
 
     # 업로드할 이미지 파일
-    image_path = img_path # 내 꺼.
+    image_path = img_path # 입력 받은 image path
 
     # 이미지를 base64 형식으로 인코딩
     with open(image_path, 'rb') as f:
