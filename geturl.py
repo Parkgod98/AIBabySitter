@@ -4,7 +4,7 @@ import base64
 def get_url(img_path) :
 
     # Imgur API 클라이언트 ID
-    client_id = '-----------' # imgur에서 받은 Client Key -> 가림         a
+    client_id = '-----------' # imgur에서 받은 Client Key -> 가림
 
     # 업로드할 이미지 파일
     image_path = img_path # 입력 받은 image path
