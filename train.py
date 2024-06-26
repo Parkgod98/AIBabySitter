@@ -23,7 +23,7 @@ from collections import Counter
 import math
 
 # 폴더 경로 설정
-base_path = '/home/stratio/Desktop/deep_man/cropped_faces'
+base_path = '...' # 폴더 경로 가림
 
 classes = ['Happy', 'Neutral', 'Notgood', 'Sad', 'Surpring']
 

@@ -3,6 +3,7 @@ import os
 import cv2
 import numpy as np
 
+# 유튜브 동영상 다운받는 함수
 def download_youtube_video(url, output_dir='./', filename='video.mp4'):
     yt = YouTube(url)
     stream = yt.streams.filter(progressive=True, file_extension='mp4').first()
@@ -10,7 +11,7 @@ def download_youtube_video(url, output_dir='./', filename='video.mp4'):
     stream.download(output_path=os.path.dirname(output_path), filename=os.path.basename(output_path))
     return output_path
 
-
+# 프레임마다 추출해내는 함수
 def extract_frames(video_path, frame_rate=30):
     cap = cv2.VideoCapture(video_path)
     frames = []
@@ -30,6 +31,7 @@ def extract_frames(video_path, frame_rate=30):
     return frames
 
 
+# 얼굴 이미지 전처리
 def preprocess_face(face):
     face = cv2.resize(face, (48, 48))
     face = face / 255.0
@@ -37,13 +39,14 @@ def preprocess_face(face):
     return face
 
 
+# 얻어낸 얼굴 이미지의 감정 예측하는 함수
 def predict_emotion(face, model):
     processed_face = preprocess_face(face)
     prediction = model.predict(processed_face)
     emotion = np.argmax(prediction)
     return emotion
 
-
+# 영상 내에 예측한 emotion 도시하는 함수
 def display_emotion(frame, faces, emotions):
     for (x, y, w, h), emotion in zip(faces, emotions):
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
